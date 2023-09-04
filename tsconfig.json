@@ -1,0 +1,28 @@
+{
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "newLine": "lf",
+    "isolatedModules": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "preserve",
+    "preserveSymlinks": false,
+    "skipLibCheck": true
+  }
+}

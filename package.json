@@ -1,0 +1,71 @@
+{
+  "name": "@llllvvuu/dl-webapp-sources",
+  "version": "0.1.0",
+  "description": "Create source code directory from a list of .js and .js.map URLs",
+  "repository": "github:llllvvuu/dl-webapp-sources",
+  "homepage": "https://github.com/llllvvuu/dl-webapp-sources#readme",
+  "bugs": "https://github.com/llllvvuu/dl-webapp-sources/issues",
+  "author": {
+    "name": "@llllvvuu",
+    "email": "hi@llllvvuu.dev",
+    "url": "https://llllvvuu.dev"
+  },
+  "license": "ISC",
+  "packageManager": "pnpm@8.6.12",
+  "bin": {
+    "dl-webapp-sources": "./dist/cjs/cli.js"
+  },
+  "main": "dist/cjs/lib.js",
+  "module": "dist/esm/lib.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/lib.mjs",
+      "require": "./dist/cjs/lib.js"
+    }
+  },
+  "types": "dist/cjs/lib.d.ts",
+  "files": [
+    "build.sh",
+    "dist",
+    "src",
+    "tsconfig.cjs.json",
+    "tsconfig.esm.json",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "reverse",
+    "engineering",
+    "reverse engineering",
+    "sourcemaps"
+  ],
+  "scripts": {
+    "build": "sh build.sh",
+    "lint": "eslint ./src",
+    "prepublishOnly": "pnpm build",
+    "prettier": "prettier --write .",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "commander": "^11.0.0",
+    "source-map": "^0.7.4"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.22.33",
+    "@microsoft/api-extractor": "^7.36.4",
+    "@types/node": "^20.5.9",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-sonarjs": "^0.21.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-pkg": "^0.18.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.3"
+  },
+  "sideEffects": false
+}
