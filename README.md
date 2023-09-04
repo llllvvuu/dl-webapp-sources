@@ -6,6 +6,8 @@ I created this solution since neither [denands/sourcemapper](https://github.com/
 
 `dl-webapp-sources` leaves auth/crawling to the user. It accepts a list of .js or .js.map.
 
+Sometimes it can find sources that Google Chrome misses.
+
 - [x] sanitize output paths / pad relative parents
 - [x] .js arguments
 - [x] .js.map arguments
@@ -28,12 +30,7 @@ npm install -g @llllvvuu/dl-webapp-sources
 
 Automated crawler may not pass auth, and it may also miss asynchronously loaded JS. But, you can get a list of loaded JS files by manually logging in.
 
-After logging in,
-
-- Check if there is anything interesting to download: Developer Tools > Sources > ... > Ungroup by folder
-- If the app is a SPA, click around to load all of the JS chunks
-
-Now paste into the console:
+After logging in, paste into the console:
 
 ```javascript
 performance
@@ -49,6 +46,8 @@ This gives you the CLI args for:
 ```sh
 dl-webapp-sources ${JS_URLS} -o ${OUTPUT_DIRECTORY}
 ```
+
+If you got anything interesting, go back and click around the app to load all of the chunks (if it's a SPA), and repeat.
 
 Now you can try to add some `create-react-app` or `create-next-app` boilerplate to try to get the app to build.
 

@@ -1,6 +1,6 @@
 {
   "name": "@llllvvuu/dl-webapp-sources",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Create source code directory from a list of .js and .js.map URLs",
   "repository": "github:llllvvuu/dl-webapp-sources",
   "homepage": "https://github.com/llllvvuu/dl-webapp-sources#readme",
