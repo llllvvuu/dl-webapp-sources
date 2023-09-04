@@ -6,6 +6,7 @@ I created this solution since neither [denands/sourcemapper](https://github.com/
 
 `dl-webapp-sources` leaves auth/crawling to the user. It accepts a list of .js or .js.map.
 
+- [x] sanitize output paths / pad relative parents
 - [x] .js arguments
 - [x] .js.map arguments
 - [x] URL arguments

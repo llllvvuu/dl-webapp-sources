@@ -27,11 +27,40 @@ async function main(options: { outDirectory: string }, files: string[]) {
     dependencies,
   )
 
-  await fsPromises.mkdir(options.outDirectory, { recursive: true })
+  let maxParentDirDepth = 0
+  // avoid saving files outside of the output directory
+  const sourceContentsSanitized = Object.entries(sourceContents).map(
+    ([filename, content]) => {
+      let filePath = filename
+      if (filePath.match(/^[a-zA-Z]:/)) {
+        // chop off drive letter
+        filePath = filePath.slice(2)
+      }
+      if (filePath.startsWith("/")) {
+        // chop off leading slashes (potentially more than 1)
+        filePath = filePath.replace(/^\/+/, "")
+      }
+      if (filePath.startsWith("\\")) {
+        // chop off leading backslashes (potentially more than 1)
+        filePath = filePath.replace(/^\\+/, "")
+      }
+      const parentDirDepth = filePath.match(/\.\./g)?.length
+      maxParentDirDepth = Math.max(maxParentDirDepth, parentDirDepth ?? 0)
+      return [filePath, content]
+    },
+  )
 
-  const writePromises = Object.entries(sourceContents).map(
+  const nestedOutputDir = path.join(
+    options.outDirectory,
+    "0/".repeat(maxParentDirDepth),
+  )
+
+  await fsPromises.mkdir(nestedOutputDir, { recursive: true })
+
+  const writePromises = sourceContentsSanitized.map(
     async ([filename, content]) => {
-      const filePath = path.join(options.outDirectory, filename)
+      if (filename == null || content == null) return
+      const filePath = path.join(nestedOutputDir, filename)
       const dirPath = path.dirname(filePath)
       try {
         await fsPromises.mkdir(dirPath, { recursive: true })
@@ -40,7 +69,7 @@ async function main(options: { outDirectory: string }, files: string[]) {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         console.warn(`fs Error: ${err}`)
       }
-      console.info(`Written ${filename} to ${options.outDirectory}`)
+      console.info(`Written ${filename} to ${nestedOutputDir}`)
     },
   )
 
@@ -51,7 +80,7 @@ program
   .arguments("<files...>")
   .requiredOption(
     "-o, --out-directory <dir>",
-    "Directory in which to put the downloaded original sources",
+    "Directory in which to put the downloaded original sources. If download paths contain '..', we'll add nested directories to out-directory in order to avoid saving files outside.",
   )
   .description("Usage: <files...> -o [output directory]")
   .action((files: string[], cmdObj: { outDirectory: string }) => {
