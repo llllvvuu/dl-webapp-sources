@@ -9,6 +9,9 @@ import { SourceMapConsumer } from "source-map"
 
 import { getAggregatedSourceContents } from "./lib.js"
 
+// eslint-disable-next-line no-control-regex
+const ILLEGAL_FILENAME_CHARS = /[<>:"|?*\x00-\x1F#%&{}$!'"@+`=]/g
+
 const program = new Command()
 
 async function main(options: { outDirectory: string }, files: string[]) {
@@ -44,6 +47,7 @@ async function main(options: { outDirectory: string }, files: string[]) {
         // chop off leading backslashes (potentially more than 1)
         filePath = filePath.replace(/^\\+/, "")
       }
+      filePath.replace(ILLEGAL_FILENAME_CHARS, "_")
       const parentDirDepth = filePath.match(/\.\./g)?.length
       maxParentDirDepth = Math.max(maxParentDirDepth, parentDirDepth ?? 0)
       return [filePath, content]
