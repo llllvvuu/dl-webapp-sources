@@ -63,3 +63,5 @@ See the API reference at [markdown/dl-webapp-sources.md](./markdown/dl-webapp-so
 - [tehryanx/sourcemapper](https://github.com/tehryanx/sourcemapper)
 - [jonluca/source-map-cloner](https://github.com/jonluca/source-map-cloner)
 - [paazmaya/shuji](https://github.com/paazmaya/shuji)
+- [webpack-contrib/source-map-loader](https://github.com/webpack-contrib/source-map-loader)
+- [User Pingolin on StackOverflow](https://stackoverflow.com/a/62640158/5938726)
