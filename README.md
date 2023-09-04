@@ -17,6 +17,7 @@ Sometimes it can find sources that Google Chrome misses.
 - [x] `sourceMappingURL=file:...`
 - [x] `sourceMappingURL=http...`
 - [x] `sourceMappingURL=<relativepath>`
+- [x] guess `sourceMappingURL` by adding `.map`
 - [x] lookup from `sourcesContent`
 - [x] lookup from `sources` paths
 
