@@ -20,7 +20,7 @@ I created this solution since neither [denands/sourcemapper](https://github.com/
 ## Installation
 
 ```sh
-npm install -g dl-webapp-sources
+npm install -g @llllvvuu/dl-webapp-sources
 ```
 
 ## CLI Usage
