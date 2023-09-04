@@ -52,6 +52,8 @@ dl-webapp-sources ${JS_URLS} -o ${OUTPUT_DIRECTORY}
 
 Now you can try to add some `create-react-app` or `create-next-app` boilerplate to try to get the app to build.
 
+> 💡 Sometimes `axios` gets 403; I will try to fix this if I have time, but in the meantime if you notice that the browser is downloading files fine, you can right click save in the Sources tab, and pass local filepaths to the CLI.
+
 ## Library Usage
 
 See the API reference at [markdown/dl-webapp-sources.md](./markdown/dl-webapp-sources.md).
