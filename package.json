@@ -41,7 +41,7 @@
   "scripts": {
     "build": "sh build.sh",
     "lint": "eslint ./src",
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "pnpm build && publint",
     "prettier": "prettier --write .",
     "test": "vitest"
   },
@@ -63,6 +63,7 @@
     "eslint-plugin-sonarjs": "^0.21.0",
     "prettier": "^3.0.3",
     "prettier-plugin-pkg": "^0.18.0",
+    "publint": "^0.2.2",
     "rimraf": "^5.0.1",
     "typescript": "^5.2.2",
     "vitest": "^0.34.3"
