@@ -1,12 +1,10 @@
 # Download original source code from public sourcemaps
 
-I created this solution since neither [denands/sourcemapper](https://github.com/denandz/sourcemapper), [tehryanx/sourcemapper](https://github.com/tehryanx/sourcemapper), nor [paazmaya/shuji](https://github.com/paazmaya/shuji) accept a list of multiple JS files, which is quite common with chunked webapps.
-
-[jonluca/source-map-cloner](https://github.com/jonluca/source-map-cloner) is a solution for crawling an HTML page.
-
-`dl-webapp-sources` leaves auth/crawling to the user. It accepts a list of .js or .js.map.
-
-Sometimes it can find sources that Google Chrome misses.
+Get original JavaScript/TypeScript files/project layout:
+```sh
+dl-webapp-sources -o my-react-app \
+  https://app.com/chunk1.js https://app.com/chunk2.js.map localChunk.js localMap.js.map ...
+```
 
 - [x] sanitize output paths / pad relative parents
 - [x] .js arguments
@@ -17,7 +15,7 @@ Sometimes it can find sources that Google Chrome misses.
 - [x] `sourceMappingURL=file:...`
 - [x] `sourceMappingURL=http...`
 - [x] `sourceMappingURL=<relativepath>`
-- [x] guess `sourceMappingURL` by adding `.map`
+- [x] guess `sourceMappingURL` by adding `.map` (find sources that Chrome misses)
 - [x] lookup from `sourcesContent`
 - [x] lookup from `sources` paths
 
@@ -57,6 +55,16 @@ Now you can try to add some `create-react-app` or `create-next-app` boilerplate 
 ## Library Usage
 
 See the API reference at [markdown/dl-webapp-sources.md](./markdown/dl-webapp-sources.md).
+
+## Motivation
+
+I created this solution since neither [denands/sourcemapper](https://github.com/denandz/sourcemapper), [tehryanx/sourcemapper](https://github.com/tehryanx/sourcemapper), nor [paazmaya/shuji](https://github.com/paazmaya/shuji) accept a list of multiple JS files, which is quite common with chunked webapps.
+
+[jonluca/source-map-cloner](https://github.com/jonluca/source-map-cloner) is a solution for crawling an HTML page.
+
+`dl-webapp-sources` leaves auth/crawling to the user. It accepts a list of .js or .js.map.
+
+Sometimes it can find sources that Google Chrome misses.
 
 ## Credits
 
