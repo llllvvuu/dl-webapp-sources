@@ -50,7 +50,9 @@ If you got anything interesting, go back and click around the app to load all of
 
 Now you can try to add some `create-react-app` or `create-next-app` boilerplate to try to get the app to build.
 
-> 💡 Sometimes `axios` gets 403; I will try to fix this if I have time, but in the meantime if you notice that the browser is downloading files fine, you can right click save in the Sources tab, and pass local filepaths to the CLI.
+> ⚠️  Sometimes `axios` gets 403; I will try to fix this if I have time, but in the meantime you can get around this by manually downloading .js.map from the browser and passing the local filepath into the CLI.
+
+> ⚠️  Some sites clear the performance timeline, so the performance API won't list all of the JS files. If this happens you can try another method to get the list of JS files.
 
 ## Library Usage
 
